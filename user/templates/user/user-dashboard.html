@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="user-dashboard grid grid-cols-12 py-8 px-16">
+    <div class="left-section col-span-4 flex flex-col gap-8">
+        <div class="top py-4 px-3 border-0 border-r border-r-navy/10 shadow shadow-navy/10 flex flex-col gap-3">
+            <div class="user-image-name flex gap-3 items-center justify-between">
+                <div class="user-image-name flex gap-3 items-center">
+                    <div class="dp w-12 h-12">
+                        <img src="{{ user_profile.avatar.url }}" alt="{{ user.first_name}}">
+                    </div>
+                    <div class="name flex flex-col gap-1">
+                        <h3 class="font-semibold text-2xl text-navy">
+                            {{ user.get_fullname}}
+                        </h3>
+                    </div>
+                </div> 
+                <button class="more-btn cursor-pointer text-navy/30 flex justify-center items-center w-7 h-7 t pt-0.5
+                    gray border rounded-full border-navy/20 ">
+                    <i class="fa fa-ellipsis-vertical w-full h-full mt-1 text-center
+                        "></i>
+                </button>
+            </div>
+            <div class="date-joined flex flex-col gap-1">
+                <p class="text-navy/65 font-semibold text-sm">Date joined</p>
+                <button class="w-24 text-center h-8 p-1 rounded-md border border-navy/20 text-navy/50">
+                    {{ user.date_joined|date:'F, Y' }}
+                </button>
+            </div>
+        </div>
+
+        <div class="detail-info px-3  border-0 border-r border-r-navy/10 shadow shadow-navy/10 py-2 flex flex-col
+            gap-3">
+            <h4 class="font-semibold text-lg text-navy">Personal Information</h4>
+            <div class="full-name text-navy/50 border border-navy/10 px-2 py-1 rounded">
+                <h5 class="">Full Name</h5>
+                <p class="font-semibold">
+                    {{ user.get_fullname }}
+                </p>
+            </div>
+
+            <div class="full-name text-navy/50 border border-navy/10 px-2 py-1 rounded">
+                <h5 class="">Email Address</h5>
+                <p class="font-semibold">
+                    {{ user.email }}
+                </p>
+            </div>
+
+
+            <div class="full-name text-navy/50 border border-navy/10 px-2 py-1 rounded">
+                <h5 class="">Phone Number</h5>
+                <p class="font-semibold">
+                    {{ user_profile.phone_number }}
+                </p>
+            </div>
+
+             <div class="full-name text-navy/50 border border-navy/10 px-2 py-1 rounded">
+                <h5 class="">Date of Birth</h5>
+                <p class="font-semibold">
+                    {{ user_profile.date_of_birth }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="right col-span-8 px-8">
+        <div class="order-history flex flex-col gap-3">
+            <h4 class="font-semibold text-lg text-navy">Orders History</h4>
+            <div class="search-form">
+                <form action="" method="get" class="w-full">
+                    <input
+                        type="text"
+                        name=""
+                        class="border border-navy/15 text-navy p-2 outline-0 focus:border-pinkish/25
+                            hover:border-transparent hover:shadow hover:shadow-navy/15 hover:transition-all rounded
+                            duration-150 focus:shadow-transparent w-full"
+                        placeholder="Search"
+                    >
+                </form>
+            </div>
+
+            <div class="orders-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

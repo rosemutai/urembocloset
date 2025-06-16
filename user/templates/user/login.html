@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="full bg-purple-100/45 py-8 px-16 h-40 flex flex-col justify-center">
+    <h1 class="text-navy text-xl font-semibold">My Account</h1>
+    {% include "topbanner.html" %}
+
+</div>
+
+
+<div class="login max-w-sm py-8 mx-auto h-screen">
+    <form method='post' class="form w-full bg-white shadow-md shadow-navy/15 gap-8 flex flex-col p-4">
+        {% csrf_token %}
+        <div class="gap-1">
+            <h2 class="title text-center text-xl font-semibold text-navy">Login</h2>
+            <p class="text-navy/45 text-sm text-center">Please login in using your account details</p>
+        </div>
+        <div class="inputs flex flex-col gap-5">
+            <input 
+                type="email" 
+                name="email" 
+                placeholder="Email Address"
+                class="border border-navy/15 rounded text-navy p-2 outline-0 focus:border-pinkish/25
+                    hover:border-transparent hover:shadow hover:shadow-navy/15 hover:transition-all duration-150
+                    focus:shadow-transparent"
+            >
+            
+            <input 
+                type="password" 
+                name="password" 
+                placeholder="Password"
+                class="border border-navy/15 rounded text-navy p-2 outline-0 focus:border-pinkish/25
+                    hover:border-transparent hover:shadow hover:shadow-navy/15 hover:transition-all duration-150
+                    focus:shadow-transparent"
+            >
+        </div>
+        <div class="buttons flex flex-col gap-5">
+            <a href="" class="text-navy/45 text-sm">Forgot your Password?</a>
+            <button class="bg-pinkish text-white rounded text-center h-10 py-2">Login</button>
+            <a href="{% url 'signup' %}" class="text-navy/45 text-sm text-center
+                hover:text-pinkish/50">Don't have an Account? Create Account.</a>
+        </div>
+
+    </form>
+</div>
+
+{% endblock content %}
