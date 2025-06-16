@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class=" bg-purple-100/45 py-8 px-16 h-40 flex flex-col justify-center">
+    <h1 class="text-navy text-xl font-semibold">Order Completed</h1>
+    {% include "topbanner.html" %}
+</section>
+
+<section class="p-16 w-4/5 mx-auto flex justify-center">
+    <div class="border border-dashed border-navy/20 border-t-0 border-r-0 flex flex-col items-center
+        justify-center p-8 gap-5 min-h-56 border-l-dotted">
+        <div class="icon w-9 h-9 border-2 border-lightgray p-2 text-pinkish flex 
+            rounded-tl-2xl rounded-tr-xl rounded-bl-xl rounded-br-2xl justify-center items-center">
+            <i class="fa fa-check big-icon"></i>
+        </div>
+
+        <div class="description w-3/4">
+            <p class="text-navy/45 text-center text-sm tracking-wider">
+                Thank you for your order! Your order is being processed and will be completed
+                within 3-6 hours. You will receive an email confirmation when your order is completed.
+            </p>
+        </div>
+
+        <a href="{% url 'products' %}" class="checkout bg-pinkish text-white text-center py-2 px-4 btn
+            text-sm rounded-sm">Continue Shopping</a>
+
+    </div>
+</section>
+
+{% endblock content %}

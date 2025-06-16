@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% load form_tags %}
+
+{% block content %}
+
+<section class=" bg-purple-100/45 py-8 px-16 h-40 flex flex-col justify-center">
+    <h1 class="text-navy text-xl font-semibold">Complete Your Order</h1>
+    {% include "topbanner.html" %}
+</section>
+
+<section class="grid grid-cols-12 gap-3 px-16 py-8">
+    <div class="cart-items col-span-8">
+        <h2 class="text-lg font-semibold pb-1.5">Shipping details</h2>
+
+        <form method="post" class="form border border-navy/15 rounded bg-white shadow-md 
+            shadow-navy/15 gap-8 flex flex-col p-4">
+            {% csrf_token %}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {% for field in form %}
+                    <div>
+                        <label for="name" class="text-navy/70">{{ field.label }}</label>
+                    {{ field|add_class_attribute:"w-full border border-navy/15 rounded text-navy p-2 outline-0 focus:border-pinkish/25 hover:border-transparent hover:shadow hover:shadow-navy/15 hover:transition-all duration-150 focus:shadow-transparent"}}
+
+                    </div>
+                {% endfor %}
+            </div>
+            <input type="submit" value="Place Order" class="w-1/2 mx-auto bg-pinkish text-white 
+                rounded text-center h-10 py-2">
+        </form>
+        
+    </div>
+    <div class="cart-items col-span-4 ">
+        <div class="cart-totals flex flex-col gap-2">
+            <h2 class="text-lg font-semibold">Your Order</h2>
+            <div class="bg-lightgray/55 py-2 px-6 rounded flex flex-col gap-4">
+                {% for item in cart %}
+                    <div class="flex justify-between border-0 border-b border-b-navy/15 py-3">
+                        <p class="text-base font-medium">{{ item.quantity }} X {{ item.product.name }}</p>
+                        <p class="text-base font-normal">Ksh. {{ item.total_price }}</p>
+                    </div>
+                {% endfor %}
+                <div class="flex justify-between pt-6 text-pinkish">
+                    <p class="text-base font-semibold">Total: </p>
+                    <p class="text-base font-semibold">Ksh. {{ cart.get_total_price }}</p>
+                </div>
+
+                {% comment %} <a href="{% url 'create-order' %}" class="checkout bg-green-500 text-white text-center 
+                    rounded py-2">PAY
+                </a> {% endcomment %}
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}
