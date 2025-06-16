@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block content %}
+
+<section class=" bg-purple-100/45 py-8 px-16 h-40 flex flex-col justify-center">
+    <h1 class="text-navy text-xl font-semibold">Products</h1>
+    {% include "topbanner.html" %}
+</section>
+
+<div class="title-filters flex px-16 py-5 justify-end">
+    {% comment %} <h2 class="text-blue-800 text-2xl font-semibold">All</h2> {% endcomment %}
+
+    <div class="flex gap-3 items-center">
+        <div class="flex items-center gap-1">
+            <p class="text-navy/70 text-sm font-medium">Per Page:</p>
+            <form method="get">
+                <input
+                    type="number"
+                    min="1" 
+                    name="products-num" 
+                    class="w-[50px] border border-navy/20 rounded py-1.5 px-1 outline-0 text-xs"
+                >
+            </form>
+        </div>
+
+        <div class="flex items-center gap-1">
+            <p class="text-navy/70 text-sm font-medium">Sort By:</p>
+            <form method="get">
+                    <select class="w-[90px] border border-navy/20 text-xs rounded py-1.5 px-1 outline-0 ">
+                        <option value="Best Match" >Best Selling</option>
+                        <option value="Price">Price (High to Low)</option>
+                        <option value="Price">Price (Low to High)</option>
+                        <option value="Price">Discount (High to Low)</option>
+                        <option value="Price">New Arrivals</option>
+
+                    </select>
+            </form>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <p class="text-navy/70 text-sm font-medium">View:</p>
+            <button id="grid-layout-btn" class="cursor-pointer outline-0">
+                <i class="fa fa-solid fa-table-cells-large"></i>
+            </button>
+            <button id="list-layout-btn" class="cursor-pointer outline-0">
+                <i class="fa fa-solid fa-list"></i>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<section class="grid grid-cols-12 gap-2">
+    <div class="sidenav col-span-2">
+        {% include "sidenavbar.html" %}
+    </div>
+
+    <section class="h-screen products-grid-layout col-span-10 grid grid-cols-12 pr-8 py-8 gap-5"
+        id="product-grid-layout">
+        {% for product in page_obj %}
+        <div class="card col-span-3 rounded w-64 h-64  text-navy relative group">
+            <div class="image h-3/4 bg-lightgray/30 flex justify-center items-center">
+                <img src="{{ product.featured_image.url }}" alt="{{ product.name }}" class="object contain w-1/2 h-3/4
+                    mx-auto">
+                
+                
+                <div class="absolute left-4 top-18 gap-2 text-navy p-2 hidden flex-col group-hover:flex">
+                    <i class="far fa-heart heart"></i>
+                    <i class="fa fa-shopping-cart"></i>
+                </div>
+            </div>
+            
+            <div class="flex flex-col p-3 text-center items-center">
+                <a href="{{ product.get_absolute_url }}">
+                    <h5 class="product-name font-semibold text-navy text-sm hover:text-pinkish/60">{{ product.name }}</h5>
+                </a>
+                <div class="flex gap-2 items-center">
+                    {% if  product.discount > 0 %}
+                        <p class="text-navy font-medium">Ksh. {{ product.new_price|floatformat:2|intcomma}}</p>
+                        <p class="text-pinkish font-medium line-through text-xs">Ksh. {{ product.price|intcomma}}</p>
+                    {% else %}
+                        <p class="text-navy font-medium">Ksh. {{ product.price|intcomma}}</p>
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+
+    <section class="h-screen list-layout hidden col-span-10 grid-cols-12 p-6 py-8 gap-12 w-11/12 mx-auto" 
+        id="product-list-layout">
+        {% for product in page_obj %}
+            <div class="card col-span-12 h-32 flex gap-3 py-1 shadow-sm shadow-navy/5">
+                <div class="image h-full w-32 bg-lightgray/30 flex justify-center items-center">
+                    <img src="{{ product.featured_image.url }}" alt="{{ product.name }}" class="object contain w-full h-full
+                        mx-auto object-center">
+                
+                </div>
+                
+                <div class="flex flex-col p-3 justify-center gap-2">
+                    <a href="{{ product.get_absolute_url }}" class="cursor-pointer">
+                        <h5 class="product-name font-semibold text-navy text-sm hover:text-pinkish/70">{{ product.name }}</h5>
+                    </a>
+                    <div class="price-rating flex gap-3">
+                        <div class="flex gap-2 items-center">
+                            {% if  product.discount > 0 %}
+                                <p class="text-navy text-sm font-medium">Ksh. {{ product.new_price|floatformat:2|intcomma}}</p>
+                                <p class="text-pinkish font-medium line-through text-xs">Ksh. {{ product.price|intcomma}}</p>
+                            {% else %}
+                                <p class="text-navy text-sm font-medium">Ksh. {{ product.price|intcomma}}</p>
+            
+                            {% endif %}
+                        </div>
+                        <div class="rating text-xs text-amber-300 flex items-center gap-1">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+
+                    <div class="product-description">
+                        <p class="text-navy/45">
+                            {{ product.description }}
+                        </p>
+                    </div>
+
+                    <div class="flex gap-2 text-navy">
+                        <i class="fa fa-shopping-cart"></i>
+                        <i class="far fa-heart "></i>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+</section>
+
+{% comment %} start of toast {% endcomment %}
+<div id="toast-success" class="absolute top-12 left-[40%] items-center w-full max-w-xs py-1 px-4 mb-4 text-white 
+    bg-green-400 rounded shadow hidden" role="alert">
+    <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-white 
+        rounded">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" 
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+    </div>
+    <div class="text-sm font-normal" id="toast-message">Success</div>
+    <button type="button" onclick="document.getElementById('toast-success').classList.add('hidden')"
+        class="ml-auto -mx-1.5 -my-1.5 bg-transparent text-white rounded-full flex h-6 w-6 justify-center items-center"
+            aria-label="Close">
+            <i class="fa fa-close close-btn"></i>
+        
+    </button>
+</div> 
+
+{% comment %} end of toast {% endcomment %}
+
+{% endblock content %}

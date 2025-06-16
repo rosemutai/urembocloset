@@ -1,0 +1,340 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}UremboCloset{% endblock title %}
+
+{% block content %}
+    <main class="">
+        <section class="hero flex bg-lightgray/45 h-[600px] px-16 py-10">
+            <div class="left-section w-1/2 flex flex-col gap-3 justify-center">
+                <p class="text-pinkish text-sm">Style That Turns Heads daily...</p>
+                <h1 class="font-bold text-6xl">Shop Your Style. Wear Confidence.</h1>
+                <p class="text-navy/45 w-3/4">Elevate your wardrobe with pieces taht speak your vibe and own every moment.</p>
+                <button class="btn text-white bg-pinkish border border-pinkish p-2
+                    rounded hover:transition-all duration-150 hover:tracking-widest cursor-pointer">Shop Now</button>
+            </div>
+            <div class="right-section w-1/2">
+                <div class="bg-purple-300/20 h-full w-300px]  rounded-bl-4xl 
+                    rounded-br-full rounded-t-md relative">
+                
+                    <img src="{% static 'images/heroimg.png' %}" class="h-full min-w-sm object-cover" alt="girl-posing">
+
+                </div>
+            </div>
+        </section>
+        {% comment %} featured products {% endcomment %}
+        <section class="featured-products px-16 py-10">
+            <h2 class="text-bluee text-center text-2xl font-semibold mb-2">Featured Products</h2>
+            <div class="grid grid-cols-12 w-4/5 mx-auto gap-1 items-center  justify-center">
+                <div class="card col-span-3 rounded h-48 w-48 shadow-md shadow-gray-600/10 text-navy relative
+                    group">
+                    <div class="absolute gap-2 text-navy p-2 hidden group-hover:flex">
+                        <i class="far fa-heart heart"></i>
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <div class="image h-2/3 bg-lightgray/45">
+                        <img src="" alt="" srcset="">
+                    </div>
+                    <div class="flex flex-col items-center p-2 group-hover:bg-blue-800">
+                        <h5 class="product-name font-medium text-pinkish text-base
+                            group-hover:text-white">Cantilever Chair</h5>
+                        <p class="group-hover:text-white">Ksh. 2340</p>
+                    </div>
+                </div>
+
+                <div class="card col-span-3 rounded h-48 w-48 shadow-md shadow-gray-600/10 text-navy relative
+                    group">
+                    <div class="absolute gap-2 text-navy p-2 hidden group-hover:flex">
+                        <i class="far fa-heart heart"></i>
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <div class="image h-2/3 bg-lightgray/45">
+                        <img src="" alt="" srcset="">
+                    </div>
+                    <div class="flex flex-col items-center p-2 group-hover:bg-blue-800">
+                        <h5 class="product-name font-medium text-pinkish text-base
+                            group-hover:text-white">Cantilever Chair</h5>
+                        <p class="group-hover:text-white">Ksh. 2340</p>
+                    </div>
+                </div>
+
+                <div class="card col-span-3 rounded h-48 w-48 shadow-md shadow-gray-600/10 text-navy relative
+                    group">
+                    <div class="absolute gap-2 text-navy p-2 hidden group-hover:flex">
+                        <i class="fa fa-heart heart"></i>
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <div class="image h-2/3 bg-lightgray/45">
+                        <img src="" alt="" srcset="">
+                    </div>
+                    <div class="flex flex-col items-center p-2 group-hover:bg-blue-800">
+                        <h5 class="product-name font-medium text-pinkish text-base
+                            group-hover:text-white">Cantilever Chair</h5>
+                        <p class="group-hover:text-white">Ksh. 2340</p>
+                    </div>
+                </div>
+
+                <div class="card col-span-3 rounded h-48 w-48 shadow-md shadow-gray-600/10 text-navy relative
+                    group">
+                    <div class="absolute gap-2 text-navy p-2 hidden group-hover:flex">
+                        <i class="far fa-heart heart"></i>
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <div class="image h-2/3 bg-lightgray/45">
+                        <img src="" alt="" srcset="">
+                    </div>
+                    <div class="flex flex-col items-center p-2 group-hover:bg-blue-800">
+                        <h5 class="product-name font-medium text-pinkish text-base
+                            group-hover:text-white">Cantilever Chair</h5>
+                        <p class="group-hover:text-white">Ksh. 2340</p>
+                    </div>
+                </div>
+    
+
+            </div>
+        </section>
+
+        {% comment %} latest products {% endcomment %}
+        <section class="featured-products px-16 py-10">
+            <h2 class="text-bluee text-center text-2xl font-semibold mb-2">Latest Products</h2>
+
+            <div class="flex gap-5 justify-center pt-1 pb-2">
+                <a href="" class="text-pinkish underline font-medium transition-all duration-100">New Arrival</a>
+                <a href="" class="text-navy font-medium transition-all duration-100">Featured</a>
+                <a href="" class="text-navy font-medium transition-all duration-100">Special Offer</a>
+            </div>
+            <div class="grid grid-cols-12 w-4/5 mx-auto gap-2 items-center justify-center
+                ">
+                <div class="card col-span-4 rounded w-72 h-52 shadow-md shadow-gray-600/10 text-navy relative
+                    group">
+                    <div class="image h-3/4 bg-lightgray/45">
+                        <img src="" alt="" srcset="">
+                        
+                        <div class="absolute left-4 top-18 gap-2 text-navy p-2 hidden flex-col group-hover:flex">
+                            <i class="far fa-heart heart"></i>
+                            <i class="fa fa-shopping-cart"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between p-2">
+                        <h5 class="product-name font-medium text-navy text-base">Cantilever Chair</h5>
+                        <p class="g">Ksh. 2340</p>
+                    </div>
+                </div>
+
+            
+                <div class="card col-span-4 rounded w-72 h-52 shadow-md shadow-gray-600/10 text-navy relative
+                group">
+                <div class="image h-3/4 bg-lightgray/45">
+                    <img src="" alt="" srcset="">
+                    <div class="sale-tag bg-blue-800 absolute top-6 left-6 py-1 w-18 text-center h-8 
+                        text-white transform-content rounded-tl-[16px] rounded-tr-[2px] -rotate-12 tracking-wider
+                            rounded-bl-[1px] rounded-br-[15px]">sale</div>
+                    <div class="absolute left-4 top-18 gap-2 text-navy p-2 hidden flex-col group-hover:flex">
+                        <i class="far fa-heart heart"></i>
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between p-2">
+                    <h5 class="product-name font-medium text-navy text-base">Cantilever Chair</h5>
+                    <p class="g">Ksh. 2340</p>
+                </div>
+            </div>
+            <div class="card col-span-4 rounded w-72 h-52 shadow-md shadow-gray-600/10 text-navy relative
+                    group">
+                    <div class="image h-3/4 bg-lightgray/45">
+                        <img src="" alt="" srcset="">
+                        
+                        <div class="absolute left-4 top-18 gap-2 text-navy p-2 hidden flex-col group-hover:flex">
+                            <i class="far fa-heart heart"></i>
+                            <i class="fa fa-shopping-cart"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between p-2">
+                        <h5 class="product-name font-medium text-navy text-base">Cantilever Chair</h5>
+                        <p class="g">Ksh. 2340</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        {% comment %} what we offer  {% endcomment %}
+        <section class="featured-products px-16 py-10">
+            <h2 class="text-bluee text-center text-2xl font-semibold mb-3">What UremboCloset Offers!</h2>
+            <div class="grid grid-cols-12 w-4/5 mx-auto gap-1 items-center  justify-center">
+                <div class="card col-span-3 rounded py-2 w-52 px-3 flex flex-col gap-3  h-48 shadow-md shadow-gray-600/10 text-navy">
+                    <div class="w-7 h-7 rounded-full bg-pinkish mx-auto flex justify-center items-center">
+                        <i class="fas fa-user-clock ad-icon"></i>
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="title font-semibold text-navy py-1">24/7 Customer Support</h4>
+                        <p class="text-navy/45">Our support team is always availble to help you anytime, day or night.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card col-span-3 rounded py-2 w-52 px-3 flex flex-col gap-3  h-48 shadow-md shadow-gray-600/10 text-navy">
+                    <div class="w-7 h-7 rounded-full bg-pinkish mx-auto flex justify-center items-center">
+                        <i class="fas fa-shipping-fast ad-icon"></i>
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="title font-semibold text-navy py-1">Fast & Reliable Shipping</h4>
+                        <p class="text-navy/45">Enjoy quick delivery with real-time tracking from checkout
+                            to your doorstep.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card col-span-3 rounded py-2 w-52 px-3 flex flex-col gap-3  h-48 shadow-md shadow-gray-600/10 text-navy">
+                    <div class="w-7 h-7 rounded-full bg-pinkish mx-auto flex justify-center items-center">
+                        <i class="fas fa-exchange-alt ad-icon"></i>
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="title font-semibold text-navy py-1">Hassle Free Returns</h4>
+                        <p class="text-navy/45">Return any item within two weeks, no questions asked.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card col-span-3 rounded py-2 w-52 px-3 flex flex-col gap-3  h-48 shadow-md shadow-gray-600/10 text-navy">
+                    <div class="w-7 h-7 rounded-full bg-pinkish mx-auto flex justify-center items-center">
+                        <i class="fas fa-check-square ad-icon"></i>
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="title font-semibold text-navy py-1">Secure Checkout</h4>
+                        <p class="text-navy/45">Shop with confidence through our fully
+                            secure payment system.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section class="ad flex gap-3 py-8 px-16 bg-[#ffeeff]/45">
+            <div class="left-section w-1/2">
+                <div class="blob  h-full relative z-10">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#fee8fe" d="M61.1,-59.3C76.7,-45.5,85.2,-22.8,85.5,0.2C85.7,23.2,
+                        77.6,46.4,62,61.4C46.4,76.5,23.2,83.3,1.3,82C-20.6,80.7,-41.1,71.2,-52.2,56.2C-63.3,
+                        41.1,-64.9,20.6,-64.5,0.4C-64,-19.7,-61.6,-39.5,-50.5,-53.2C-39.5,-67,-19.7,-74.7,
+                        1.5,-76.2C22.8,-77.7,45.5,-73,61.1,-59.3Z" transform="translate(100 100)" />
+                    </svg>
+                    <img  src="{% static 'images/bluedress.png' %}" class="image  absolute 
+                        top-16 left-[30%] z-50 w-1/2 object-cover h-3/4" alt="dress">
+
+                </div>
+            </div>
+            <div class="right-section flex flex-col justify-center gap-6">
+                <h2 class="text-4xl font-medium text-navy">Unique Features of the Latest <br> Trending Product</h2>
+                <div class="product-details flex flex-col gap-3 text-navy/45">
+                    <div class="list1 flex gap-2 items-center">
+                        <i class="fa fa-circle circle1"></i>
+                        <p class="">A crisp square neckline and soft ruffled straps for added detail</p>
+                    </div>
+
+                    <div class="list1 flex gap-2 items-center">
+                        <i class="fa fa-circle circle2"></i>
+                        <p class="">Light and breezy, perfect for both casual and semiformal occasions.</p>
+                    </div>
+
+                    <div class="list1 flex gap-2 items-center">
+                        <i class="fa fa-circle circle3"></i>
+                        <p class="">A Smocked bodice providing texture and structure, creating an elegant look.</p>
+                    </div>
+                </div>
+
+                <div class="button flex gap-4">
+                    <button class="bg-pinkish text-white text-center font-light text-sm px-4 rounded py-2">Add To Cart</button>
+                    <div class="flex flex-col ">
+                        <p class="font-medium text-sm">Skylight Grace Dress</p>
+                        <p class="text-sm">Ksh. 2999</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% comment %} Top categoriess {% endcomment %}
+        <section class="product-categories w-4/5 mx-auto py-8">
+            <h2 class="text-bluee text-center text-2xl font-semibold mb-3">Top Categories</h2>
+            <div class="grid grid-cols-12 w-4/5 mx-auto gap-2 items-center justify-center">
+                {% comment %} category 1 {% endcomment %}
+                <div class="round-card col-span-3 flex flex-col gap-2 items-center justify-center w-56 h-56">
+                    <div class="image-btn bg-purple-100/25 col-span-3 w-40 h-40 shadow-md shadow-navy/15
+                        flex flex-col gap-3 justify-center items-center text-navy group pt-2 border-b-4
+                        border-b-transparent hover:border-b-pinkish border-l-4 border-l-transparent hover:border-l-pinkish
+                        rounded-full transition-all duration-150 group">
+                        <img src="{% static 'images/dress.png' %}" class="-mt-4 w-1/2 h-1/2 mx-auto " alt="">
+                        
+                    </div>
+                    <p class="font-semibold">Women</p>
+                    <button class="border border-pinkish w-[60px] h-[24px] rounded text-pinkish text-xs">
+                        View
+                    </button>
+                </div>
+
+                {% comment %} category 2 {% endcomment %}
+                <div class="round-card col-span-3 flex flex-col gap-2 items-center justify-center w-56 h-56">
+                    <div class="image-btn bg-purple-100/25 col-span-3 w-40 h-40 shadow-md shadow-navy/15
+                        flex flex-col gap-3 justify-center items-center text-navy group pt-2 border-b-4
+                        border-b-transparent hover:border-b-sky-500 border-l-4 border-l-transparent hover:border-l-sky-500
+                        rounded-full transition-all duration-150 group">
+                        <img src="{% static 'images/dress.png' %}" class="-mt-4 w-1/2 h-1/2 mx-auto " alt="">
+                        
+                    </div>
+                    <p class="font-semibold">Men</p>
+                    <button class="border border-sky-500 w-[60px] h-[24px] rounded text-sky-500 text-xs">
+                        View
+                    </button>
+                </div>
+
+                {% comment %} category 3 {% endcomment %}
+                <div class="round-card col-span-3 flex flex-col gap-2 items-center justify-center w-56 h-56">
+                    <div class="image-btn bg-purple-100/25 col-span-3 w-40 h-40 shadow-md shadow-navy/15
+                        flex flex-col gap-3 justify-center items-center text-navy group pt-2 border-b-4
+                        border-b-transparent hover:border-b-purple-400 border-l-4 border-l-transparent hover:border-l-purple-400
+                        rounded-full transition-all duration-150 group">
+                        <img src="{% static 'images/dress.png' %}" class="-mt-4 w-1/2 h-1/2 mx-auto " alt="">
+                        
+                    </div>
+                    <p class="font-semibold">Kids</p>
+                    <button class="border border-purple-400 w-[60px] h-[24px] rounded text-purple-400 text-xs">
+                        View
+                    </button>
+                </div>
+
+                {% comment %} category 4 {% endcomment %}
+                <div class="round-card col-span-3 flex flex-col gap-2 items-center justify-center w-56 h-56">
+                    <div class="image-btn bg-purple-100/25 col-span-3 w-40 h-40 shadow-md shadow-navy/15
+                        flex flex-col gap-3 justify-center items-center text-navy group pt-2 border-b-4
+                        border-b-transparent hover:border-b-blue-800 border-l-4 border-l-transparent hover:border-l-blue-800
+                        rounded-full transition-all duration-150 group">
+                        <img src="{% static 'images/dress.png' %}" class="-mt-4 w-1/2 h-1/2 mx-auto " alt="">
+                        
+                    </div>
+                    <p class="font-semibold">Accesories</p>
+                    <button class="border border-blue-800 w-[60px] h-[24px] rounded blue-purple-800 text-xs">
+                        View
+                    </button>
+                </div>
+                
+            </div>
+        </section>
+
+        {% comment %} subscribe-to-email {% endcomment %}
+        <section class="bg-pinkish/45 h-[300px] flex flex-col justify-center items-center gap-4">
+            <h2 class="text-4xl font-medium text-white">Unique Features of the Latest <br> Trending Product</h2>
+            <form method="post" class="flex gap-2 items-center">
+                <input type="email" name="subscribe-email" class="border border-navy/45 p-2">
+                <button type="submit" class="text-pinkish bg-white btn rounded text-center px-3 py-2">Subscribe</button>
+            </form>
+
+
+        </section>
+
+    </main>
+{% endblock content %}
+    

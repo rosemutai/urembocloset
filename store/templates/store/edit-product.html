@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="full bg-purple-100/45 py-8 px-16 h-40 flex flex-col justify-center">
+    <h1 class="text-navy text-xl font-semibold">Product</h1>
+    {% include "topbanner.html" %}
+
+</div>
+
+
+<div class=" max-w-md py-8 mx-auto h-screen pb-12">
+    <form method='post' class="form w-full bg-white shadow-md shadow-navy/15 gap-8 flex flex-col 
+        p-4" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="gap-1">
+            <h2 class="title text-center text-xl font-semibold text-navy">Edit Product</h2>
+            <p class="text-navy/45 text-sm text-center">Make changes by filling in the form below</p>
+        </div>
+
+        <div class="inputs flex flex-col gap-5">
+            <div class="flex flex-col">
+                <label for="name" class="text-navy/70">Name</label>
+                <input 
+                    type="text" 
+                    value = "{{ product.name }}"
+                    name="name" 
+                    id="name"
+                    class="border border-navy/15 rounded text-navy p-2 outline-0 focus:border-pinkish/25
+                        hover:border-transparent hover:shadow hover:shadow-navy/15 hover:transition-all duration-150
+                        focus:shadow-transparent"
+                >
+            </div>
+
+            <div class="flex flex-col">
+                <label for="price" class="text-navy/70" >Price <span class="text-navy/45 text-sm">(Ksh.)</span></label>
+                <input 
+                    type="number"
+                    value = "{{ product.price }}"
+                    name="price"
+                    step="0.01"
+                    min="0.00"
+                    id="price"
+                    class="border border-navy/15 rounded text-navy p-2 outline-0 focus:border-pinkish/25
+                        hover:border-transparent hover:shadow hover:shadow-navy/15 hover:transition-all duration-150
+                        focus:shadow-transparent"
+                >
+            </div>
+
+            <div class="flex flex-col">
+                <label for="discount" class="text-navy/70" >Discount <span class="text-navy/45 text-sm">(in percent (%))</span></label>
+                <input 
+                    type="number"
+                    value = "{{ product.discount }}"
+                    name="discount"
+                    min="1"
+                    id="discount"
+                    class="border border-navy/15 rounded text-navy p-2 outline-0 focus:border-pinkish/25
+                        hover:border-transparent hover:shadow hover:shadow-navy/15 hover:transition-all duration-150
+                        focus:shadow-transparent"
+                >
+            </div>
+            <div class="flex flex-col">
+                <label for="stock-quantity" class="text-navy/70">Stock Quantity</label>
+                <input 
+                    type="number"
+                    value = "{{ product.stock_quantity }}"
+                    name="stock-quantity" 
+                    id="stock-quantity"
+                    min="1"
+                    class="border border-navy/15 rounded text-navy p-2 outline-0 focus:border-pinkish/25
+                        hover:border-transparent hover:shadow hover:shadow-navy/15 hover:transition-all duration-150
+                        focus:shadow-transparent"
+                >
+            </div>
+
+            <div class="flex flex-col">
+                <label for="sku" class="text-navy/70">SKU</label>
+                <input 
+                    type="text" 
+                    value = "{{ product.SKU }}"
+                    name="SKU" 
+                    id="sku"
+                    class="border border-navy/15 rounded text-navy p-2 outline-0 focus:border-pinkish/25
+                        hover:border-transparent hover:shadow hover:shadow-navy/15 hover:transition-all duration-150
+                        focus:shadow-transparent"
+                >
+            </div>
+
+            <div class="flex flex-col">
+                <label for="category" class="text-navy/70">Category</label>
+                <select
+                    name="category" 
+                    id="category"
+                    class="border border-navy/15 rounded text-navy p-2 outline-0 focus:border-pinkish/25
+                        hover:border-transparent hover:shadow hover:shadow-navy/15 hover:transition-all duration-150
+                        focus:shadow-transparent"
+                >
+                    <option value="" class="text-navy/20 text-sm">Select Category</option>
+                {% for category in categories %}
+                    <option id="{{ category.id }}" value="{{ category.id }}" {% if category.id == product.category.id %} selected {% endif %}>
+                        
+                        {{ category.parent }} > {{ category.name }}
+                    </option>
+                {% endfor %}
+            
+                </select>
+            </div>
+
+            <div class="flex flex-col">
+                <label for="description" class="text-navy/70">Description</label>
+                <textarea
+                    name="description"
+                    id="description"
+                    class="border border-navy/15 rounded text-navy p-2 outline-0 focus:border-pinkish/25
+                        hover:border-transparent hover:shadow hover:shadow-navy/15 hover:transition-all duration-150
+                        focus:shadow-transparent"
+                >{{ product.description }}</textarea>
+            </div>
+            
+
+            <div class="flex flex-col">
+                
+                <label for="featured-image" class="text-navy/70">Featured Image</label>
+                <input 
+                    type="file"
+                    name="featured-image" 
+                    id="featured-image"
+                    class="border border-navy/15 rounded text-navy p-2 outline-0 focus:border-pinkish/25
+                        hover:border-transparent hover:shadow hover:shadow-navy/15 hover:transition-all duration-150
+                        focus:shadow-transparent"
+                >
+                
+            </div>
+
+            <div class="flex flex-col">
+                <div class="gap-3 items-center grid grid-cols-12">
+                    <div class="image col-span-3 h-16 w-16 bg-lightgray/45 rounded-sm flex items-center justify-center">
+                        <img src="{{ product.featured_image.url }}" alt="{{ product.name}}" class="h-16 w-16 ">
+                    </div>
+                    {% for image in current_images %}
+                        <div class="relative col-span-3">
+                            <div class="image h-14 w-14 bg-lightgray/45 rounded-sm flex items-center justify-center">
+                                <img src="{{ image.image.url }}" alt="{{image__product__name}}" class="h-10 w-10">
+                            </div>
+                            <input 
+                                type="checkbox"
+                                multiple 
+                                name="delete-images"
+                                value="{{ image.id }}" 
+                                id="multiple-images"
+                                class="absolute top-1 left-10"
+                            >
+                            
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <label for="multiple-images" class="text-navy/70">Add new Images</label>
+                <input 
+                    type="file"
+                    multiple 
+                    name="multiple-images" 
+                    id="multiple-images"
+                    class="border border-navy/15 rounded text-navy p-2 outline-0 focus:border-pinkish/25
+                        hover:border-transparent hover:shadow hover:shadow-navy/15 hover:transition-all duration-150
+                        focus:shadow-transparent"
+                >
+                
+                
+                
+            </div>
+        </div>
+
+        <div class="buttons flex gap-5">
+            <button role="button" class="w-full bg-pinkish text-white rounded text-center h-10 py-2">Update</button>
+        </div>
+
+    </form>
+</div>
+
+{% endblock content %}
