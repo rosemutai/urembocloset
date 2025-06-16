@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+    --color-pinkish: #fb2e86;
+    --color-navy: #101151;
+    --color-offnavyblue: #2c376d;
+    --color-skyblue: #ebe2eb;
+    --color-purplee: #56239A;
+    --color-offpurple: #6d447c;
+    --color-opartonepurple: #9b91a9;
+    --color-skyblue2: #a7a9b0;
+    --color-redd: #ad1931;
+    --color-bluee: #211287;
+    --color-lightgray: #d3d3d366;
+
+}
+
+body {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.fa, .fas, .far {
+    padding: 0;
+    font-size: 12px;
+}
+
+.big-icon, .close-btn, .fa-cart-shopping {
+    font-size: 20px;
+}
+
+.cart {
+    color: #9503fe;
+    /* background-color: #d3d3d366; */
+}
+
+.heart{
+    color: skyblue;
+}
+
+.label-tag {
+    transform: rotate();
+}
+
+.ad-icon {
+    color: white
+}
+
+.circle1,
+.odd {
+    color: #fb2e86;
+}
+
+.circle2 {
+    color: #211287;
+}
+
+.circle3 {
+    color: #3aff3a;
+}
+
+.circle4 {
+    color: orange;
+}
+
+
+.circle5 {
+    color: chocolate;
+}
+
+
+.circle6 {
+    color: #f10cf1;
+}
+
+
+.btn {
+    width: 140px;
+    height: 40px;
+}
+
+.link-icon {
+    width: 4px;
+    height: 4px;
+}
+
+input:-webkit-autofill {
+    box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: #101151;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.active {
+    color: #fb2e86;
+}
+
+.grey-icon {
+    color: #a9a7a766;
+}
+
+.star {
+    font-size: 8px;
+}
