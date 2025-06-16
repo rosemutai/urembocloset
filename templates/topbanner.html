@@ -1,0 +1,15 @@
+
+{% block content %}
+{% load url_tags %}
+
+    <div>
+        
+        <div class="links flex items-center gap-2 text-lg">
+            <a href="" class="text-pinkish">
+                {{ request.path|format_url_path }}
+            </a>
+            
+        </div>
+    </div>
+
+{% endblock content %}
