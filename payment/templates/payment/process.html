@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="grid grid-cols-12 gap-3 px-16 py-8">
+       <div class="cart-contents col-span-9 flex flex-col">
+        <div class="header grid grid-cols-12 px-3">
+            <h4 class=" font-semibold col-span-2">Image</h4>
+            <h4 class=" font-semibold col-span-4">Product</h4>
+            <h4 class=" font-semibold col-span-2">Qty</h4>
+            <h4 class=" font-semibold col-span-2">Unit Price</h4>
+            <h4 class=" font-semibold col-span-2">Total</h4>
+        </div>
+
+        {% for item in order.items.all %}
+                <div class="cart-item-details-card grid grid-cols-12 h-32 p-3 border-0 border-b border-b-navy/10">
+                    <div class="col-span-2">
+                        <div class="image ">
+                            <img src="{{ item.product.featured_image.url}}" alt="{{ item.product.name }}" class="bg-lightgray/35
+                                    border-navy/10 object-contain rounded-sm w-20 h-16 shadow shadow-navy/5"> 
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-1 justify-center col-span-4">
+                        <h4 class="text-base font-normal">{{ item.product.name }}</h4>
+                    </div>
+
+                    <div class=" col-span-2 flex items-center">
+                        <p class="text-base font-normal">{{ item.quantity }}</p>
+                    </div>
+
+                    <div class=" col-span-2 flex items-center">
+                        <p class="text-base font-normal">Ksh. {{ item.price }}</p>
+                    </div>
+
+                    <div class=" col-span-2 flex items-center">
+                        <p class="text-base font-normal">Ksh. {{ item.get_cost }}</p>
+                    </div>
+
+                </div>
+        {% endfor %}
+
+    </div>
+    <div class="order-items col-span-3 border border-navy/10 rounded p-3 flex flex-col gap-5">
+        <div class="flex justify-between py-2 border-b border-b-navy/15 pr-2">
+            <p class="text-base font-semibold ">Total: </p>
+            <p class="text-base font-bold">Ksh. {{ order.get_total_cost }}</p>
+        </div>
+        <div class="flex flex-col gap-1">
+            <p class="font-normal text-navy/45">Visa/Master card supported</p>
+            <form action="{% url 'process-payment' %}" method="post" class="w-full">
+                <input type="submit" value="Pay Via Card" class="w-1/2 border text-sm bg-pinkish text-white
+                    rounded text-center h-10 py-2">
+                {% csrf_token %}
+            </form>
+        </div>
+
+        <div class="flex flex-col gap-1">
+            <p class="font-normal text-navy/45">Pay with M-pesa Mobile</p>
+            <form action="{% url 'process-payment' %}" method="post" class="w-full">
+                <input type="submit" value="Pay Via Mpesa" class="w-1/2 border text-sm bg-green-400 text-white
+                    rounded text-center h-10 py-2">
+                {% csrf_token %}
+            </form>
+        </DIV>
+    </div>
+</section>
+{% endblock content %}
